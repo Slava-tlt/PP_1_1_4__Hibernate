@@ -10,16 +10,16 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    UserDaoJDBCImpl userDaoJDBCImpl = new UserDaoJDBCImpl();
+    UserDao userDao = new UserDaoJDBCImpl();
 
     @Override
     public void createUsersTable() {
-        userDaoJDBCImpl.createUsersTable();
+        userDao.createUsersTable();
     }
 
     @Override
     public List<User> getAllUsers() {
-        List<User> users = userDaoJDBCImpl.getAllUsers();
+        List<User> users = userDao.getAllUsers();
         for (User user : users) {
             System.out.println(user);
         }
@@ -28,22 +28,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(String name, String lastName, byte age) {
-        userDaoJDBCImpl.saveUser(name, lastName, age);
+        userDao.saveUser(name, lastName, age);
         System.out.println("User с именем – " + name + " добавлен в базу данных");
     }
 
     @Override
     public void removeUserById(long id) {
-        userDaoJDBCImpl.removeUserById(id);
+        userDao.removeUserById(id);
     }
 
     @Override
     public void cleanUsersTable() {
-        userDaoJDBCImpl.cleanUsersTable();
+        userDao.cleanUsersTable();
     }
 
     @Override
     public void dropUsersTable() {
-        userDaoJDBCImpl.dropUsersTable();
+        userDao.dropUsersTable();
     }
 }
