@@ -1,5 +1,9 @@
 package jm.task.core.jdbc.util;
 
+import jm.task.core.jdbc.model.User;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import java.sql.*;
 
 public class Util {
@@ -8,6 +12,13 @@ public class Util {
     private static final String DB_URL ="jdbc:mysql://localhost:3306/test1";
     private static final String DB_USERNAME ="root";
     private static final String DB_PASSWORD ="root";
+
+
+    public static SessionFactory getSessionFactory(){
+        return new Configuration()
+                .addAnnotatedClass(User.class)
+                .buildSessionFactory();
+    }
 
     public Connection getConnection(){
         Connection connection = null;
